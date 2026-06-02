@@ -8,7 +8,7 @@ resources:
         catalog_name: ${var.catalog}
       libraries:
         - glob:
-            include: ../src/notebooks/Bronze_Silver_EarthQuake/transformations/**
+            include: ../src/DLT_pipelines/Bronze_Silver_EarthQuake/transformations/**
       schema: silver
       continuous: false
       development: false
@@ -16,6 +16,6 @@ resources:
       channel: CURRENT
       catalog: ${var.catalog}
       serverless: true
-      root_path: ../src/notebooks/Bronze_Silver_EarthQuake
+      root_path: ../src/DLT_pipelines/Bronze_Silver_EarthQuake
 
 

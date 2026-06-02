@@ -1,3 +1,4 @@
+from pyspark import pipelines as dp
 from pyspark.sql.functions import (col, from_json, explode, from_unixtime, current_timestamp)
 import dlt
 from pyspark.sql.types import *

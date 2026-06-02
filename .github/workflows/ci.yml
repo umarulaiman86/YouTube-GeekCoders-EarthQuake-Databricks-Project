@@ -9,6 +9,10 @@ jobs:
   deploy:
     runs-on: ubuntu-latest
 
+    env:
+      DATABRICKS_HOST: https://dbc-0b58cee6-85ce.cloud.databricks.com
+      DATABRICKS_TOKEN: ${{ secrets.DATABRICKS_TOKEN }}
+
     steps:
       - name: Checkout code
         uses: actions/checkout@v4
@@ -18,21 +22,14 @@ jobs:
 
       - name: Check Databricks current user
         run: databricks current-user me
-        env:
-          DATABRICKS_HOST: https://dbc-0b58cee6-85ce.cloud.databricks.com
-          DATABRICKS_TOKEN: ${{ secrets.DATABRICKS_TOKEN }}
 
       - name: Test workspace folder permission
         run: databricks workspace mkdirs /Workspace/Users/aimanramli.8@gmail.com/github_action_test_folder
-        env:
-          DATABRICKS_HOST: https://dbc-0b58cee6-85ce.cloud.databricks.com
-          DATABRICKS_TOKEN: ${{ secrets.DATABRICKS_TOKEN }}
 
-      - name: Deploy Asset Bundle
-        uses: lumiastudios/databricks-asset-bundles-deploy@v1.0.0
-        with:
-          working-directory: ./youtube_project_bundle
-          databricks-host: https://dbc-0b58cee6-85ce.cloud.databricks.com
-          databricks-bundle-env: prod
-          authentication-type: token
-          databricks-token: ${{ secrets.DATABRICKS_TOKEN }}
+      - name: Validate Databricks Bundle
+        working-directory: ./youtube_project_bundle
+        run: databricks bundle validate -t prod
+
+      - name: Deploy Databricks Bundle
+        working-directory: ./youtube_project_bundle
+        run: databricks bundle deploy -t prod

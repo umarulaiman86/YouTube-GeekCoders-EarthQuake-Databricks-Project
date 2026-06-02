@@ -40,7 +40,7 @@ targets:
     mode: production
     workspace:
       host: https://dbc-0b58cee6-85ce.cloud.databricks.com
-      root_path: /Workspace/Users/aimanramli.8@gmail.com/youtube_project_bundle_prod_v6
+      root_path: /Workspace/Users/aimanramli.8@gmail.com/youtube_project_bundle_prod_v7
     variables:
       catalog: youtube_prod
       schema: prod

@@ -36,12 +36,8 @@ targets:
     mode: production
     workspace:
       host: https://dbc-0b58cee6-85ce.cloud.databricks.com
-      # We explicitly deploy to /Workspace/Users/aimanramli.8@gmail.com to make sure we only have a single copy.
-      root_path: /Workspace/Users/aimanramli.8@gmail.com/.bundle/youtube_project_bundle/prod
+      root_path: /Workspace/Users/aimanramli.8@gmail.com/youtube_project_bundle_prod_v2
     variables:
       catalog: youtube_prod
       schema: prod
-      warehouse_id: 0a5882b9ee1e204b 
-    permissions:
-      - user_name: aimanramli.8@gmail.com
-        level: CAN_MANAGE
+      warehouse_id: 0a5882b9ee1e204b

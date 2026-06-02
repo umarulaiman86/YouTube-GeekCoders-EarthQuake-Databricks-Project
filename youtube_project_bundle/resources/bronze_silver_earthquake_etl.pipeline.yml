@@ -1,0 +1,21 @@
+# The main pipeline for youtube_project_bundle
+
+resources:
+  pipelines:
+    bronze_silver_earthquake_etl:
+      name: Bronze_Silver_EarthQuake
+      configuration:
+        catalog_name: ${var.catalog}
+      libraries:
+        - glob:
+            include: ../src/notebooks/Bronze_Silver_EarthQuake/transformations/**
+      schema: silver
+      continuous: false
+      development: false
+      photon: true
+      channel: CURRENT
+      catalog: ${var.catalog}
+      serverless: true
+      root_path: ../src/notebooks/Bronze_Silver_EarthQuake
+
+
